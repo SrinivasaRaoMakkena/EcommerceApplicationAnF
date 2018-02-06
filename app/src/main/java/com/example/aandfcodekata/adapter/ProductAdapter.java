@@ -17,13 +17,7 @@ import com.example.aandfcodekata.activities.WebViewActivity;
 import com.example.aandfcodekata.model.Content;
 import com.example.aandfcodekata.model.Product;
 import com.example.aandfcodekata.util.Util;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import butterknife.BindView;
 
 /**
  * Created by Srinivas on 2/5/2018.
@@ -33,14 +27,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private List<Product> products;
     private Context context;
-    Util util;
 
     public ProductAdapter(List<Product> prods, Context context) {
-
         this.products = prods;
         this.context = context;
-        util = new Util();
-
     }
 
     public class ProductViewHolder extends RecyclerView.ViewHolder {
@@ -90,11 +80,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             if (!prodItem.getBackgroundImage().equals("")) {
                 holder.prodImage.setVisibility(View.VISIBLE);
                 Glide.with(context).load(prodItem.getBackgroundImage())
-
                         .fitCenter()
-
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(holder.prodImage);
+
             } else {
                 holder.prodImage.setVisibility(View.GONE);
             }
@@ -118,7 +107,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
                 final List<String> urls = Util.extractUrls(prodItem.getBottomDescription());
                 if (urls.get(0).endsWith("\\")) {
-                    urls.add(0,urls.get(0).substring(0,urls.get(0).length()-1));
+                    urls.add(0, urls.get(0).substring(0, urls.get(0).length() - 1));
                 }
                 holder.bDescription2.setText(Util.addUnderLine("Exclusions apply. See Details."));
 

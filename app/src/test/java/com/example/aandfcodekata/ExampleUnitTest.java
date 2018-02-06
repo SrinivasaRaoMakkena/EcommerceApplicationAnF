@@ -1,5 +1,7 @@
 package com.example.aandfcodekata;
 
+import com.example.aandfcodekata.util.Util;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -11,7 +13,10 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void extractUrls() throws Exception {
+        assertEquals("https://www.abercrombie.com/shop/us/womens-new-arrivals", Util.extractUrls("whatareyoudoinghttps://www.abercrombie.com/shop/us/womens-new-arrivals how about you").get(0));
     }
+
+
+
 }

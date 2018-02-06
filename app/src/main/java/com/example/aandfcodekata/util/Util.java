@@ -1,6 +1,9 @@
 package com.example.aandfcodekata.util;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.text.Html;
 import android.text.Spanned;
 import android.widget.TextView;
@@ -15,10 +18,10 @@ import java.util.regex.Pattern;
  */
 
 public class Util {
-    static Activity activity;
+    static Context context;
 
-    public void Util(Activity a) {
-        this.activity = a;
+    public  Util(Context a) {
+        this.context = a;
     }
 
     public static final String NEW_LINE = "\n";
@@ -62,4 +65,6 @@ public class Util {
 
         return containedUrls;
     }
+
+
 }

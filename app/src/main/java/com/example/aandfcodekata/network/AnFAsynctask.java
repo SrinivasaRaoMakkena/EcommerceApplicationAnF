@@ -3,17 +3,11 @@ package com.example.aandfcodekata.network;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-
-import com.example.aandfcodekata.adapter.ProductAdapter;
 import com.example.aandfcodekata.model.Product;
-import com.example.aandfcodekata.model.ProductList;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,11 +26,11 @@ import java.util.List;
 public class AnFAsynctask extends AsyncTask<Void, Void, String> {
     private ProgressDialog mProgressDialog;
     private Context mContext;
-   public OnTaskCompleted onTaskCompleted;
+    public OnTaskCompleted onTaskCompleted;
 
-    public AnFAsynctask(Context context,OnTaskCompleted taskCompleted) {
+    public AnFAsynctask(Context context, OnTaskCompleted taskCompleted) {
         this.mContext = context;
-       this.onTaskCompleted = taskCompleted;
+        this.onTaskCompleted = taskCompleted;
 
     }
 
@@ -58,11 +52,7 @@ public class AnFAsynctask extends AsyncTask<Void, Void, String> {
             System.out.println(httpURLConnection.getResponseCode());
             try {
                 InputStream in = new BufferedInputStream(httpURLConnection.getInputStream());
-
                 s = readStream(in);
-
-
-                //System.out.println(s);
             } finally {
                 httpURLConnection.disconnect();
             }
@@ -87,7 +77,7 @@ public class AnFAsynctask extends AsyncTask<Void, Void, String> {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject jsonObj = array.getJSONObject(i);
                 Gson g = new Gson();
-                Product p = g.fromJson(jsonObj.toString(),Product.class);
+                Product p = g.fromJson(jsonObj.toString(), Product.class);
                 productList.add(p);
 
                 System.out.println(jsonObj.get("title"));
@@ -97,17 +87,7 @@ public class AnFAsynctask extends AsyncTask<Void, Void, String> {
             e.printStackTrace();
         }
 
-
-//        array.
-
-
-//        Gson gson = new Gson();
-//        ProductList prod =  gson.fromJson(s, ProductList.class);
-//        System.out.println(prod.getList()[0].getTitle());
-
-
     }
-
 
     private String readStream(InputStream in) {
         BufferedReader reader = null;

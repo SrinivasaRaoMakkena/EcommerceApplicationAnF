@@ -28,9 +28,7 @@ public class WebViewActivity extends AppCompatActivity {
         System.out.println("url " + i.getStringExtra("url"));
         browser.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         configureWebView(browser);
-
         browser.loadUrl(i.getStringExtra("url"));
-
         setTitle("Abercrombie & Fitch Web");
     }
 
@@ -44,7 +42,6 @@ public class WebViewActivity extends AppCompatActivity {
         webSettings.setSupportMultipleWindows(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setAllowFileAccess(true);
-        //webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
         webview.setWebViewClient(new InnerWebViewClient());
         webview.setInitialScale(100);
