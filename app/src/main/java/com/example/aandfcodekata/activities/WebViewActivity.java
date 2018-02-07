@@ -30,6 +30,7 @@ public class WebViewActivity extends AppCompatActivity {
         configureWebView(browser);
         browser.loadUrl(i.getStringExtra("url"));
         setTitle("Abercrombie & Fitch Web");
+
     }
 
 

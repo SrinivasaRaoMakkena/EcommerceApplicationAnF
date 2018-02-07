@@ -106,19 +106,28 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 holder.bDescription2.setVisibility(View.VISIBLE);
 
                 final List<String> urls = Util.extractUrls(prodItem.getBottomDescription());
-                if (urls.get(0).endsWith("\\")) {
-                    urls.add(0, urls.get(0).substring(0, urls.get(0).length() - 1));
+                if (urls != null) {
+                    if (urls.size() > 0) {
+                        if (urls.get(0).endsWith("\\")) {
+                            urls.add(0, urls.get(0).substring(0, urls.get(0).length() - 1));
+                            System.out.println("url: " + urls.get(0));
+                        }
+                    }
                 }
                 holder.bDescription2.setText(Util.addUnderLine("Exclusions apply. See Details."));
 
-                System.out.println("url: " + urls.get(0));
+
 
                 holder.bDescription2.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(context, WebViewActivity.class);
-                        intent.putExtra("url", urls.get(0));
+                        if (urls != null ) {
+                            if (urls.size()>0) {
+                                intent.putExtra("url", urls.get(0));
+                            }
+                        }
                         context.startActivity(intent);
                     }
 
